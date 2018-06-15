@@ -1,0 +1,36 @@
+{
+  "name": "pm2-vs-forever",
+  "version": "1.0.0",
+  "description": "A comparison suite to discern any performance or development gains of pm2 vs forever.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pm2",
+    "forever",
+    "hapi",
+    "express",
+    "loopback"
+  ],
+  "author": "Joel Milligan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "express": "^4.16.3",
+    "forever": "^0.15.3",
+    "hapi": "^17.5.1",
+    "loopback": "^3.7.0",
+    "pm2": "^2.10.4"
+  },
+  "devDependencies": {
+    "artillery": "^1.6.0-19"
+  }
+}
