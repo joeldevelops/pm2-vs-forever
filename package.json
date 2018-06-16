@@ -4,6 +4,7 @@
   "description": "A comparison suite to discern any performance or development gains of pm2 vs forever.",
   "main": "server.js",
   "scripts": {
+    "start:express": "node ./microservices/ms-express/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -11,9 +12,11 @@
     "forever",
     "hapi",
     "express",
-    "loopback"
+    "loopback",
+    "microservices",
+    "performance"
   ],
-  "author": "Joel Milligan",
+  "author": "Joel Milligan <joeldevelops@gmail.com> (http://joeldev.io/)",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -22,7 +25,6 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "http-errors": "~1.6.2",
-    "jade": "~1.11.0",
     "morgan": "~1.9.0",
     "express": "^4.16.3",
     "forever": "^0.15.3",
