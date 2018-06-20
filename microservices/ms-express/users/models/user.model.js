@@ -1,34 +1,43 @@
-const { mongoose, connection } = require('./mongo-init');
+const connection = require('./mongo-init').connection;
 
-const UserSchema = mongoose.Schema({
-    name: {
-        first: {
-            type: String,
-            required: true
-        },
-        last: {
-            type: String,
-            required: true
-        }
+const UserSchema = require('./schemas/user.schema');
+const User = connection.model('User', UserSchema);
+
+const UserModel = {
+    getAllUsers: () => {
+        return User.find()
+            .then((users) => {
+                return users;
+            });
     },
-    age: Number,
-    ticketIds: Array,
-    createdAt: Date
-});
 
-UserSchema.pre('save', (next) => {
-    if (!this.createdAt) this.createdAt = new Date();
+    getUserById: (id) => {
+        return User.findById(id)
+            .then((user) => {
+                return user;
+            });
+    },
 
-    next();
-});
+    createNewUser: (user) => {
+        return User.create(user)
+            .then((user) => {
+                return user;
+            });
+    },
 
-const UserModel = connection.model('User', UserSchema);
+    updateUserById: (user) => {
+        return User.findByIdAndUpdate(user)
+            .then((user) => {
+                return user;
+            });
+    },
 
-class User {
-    createUser = (user) => {
-        UserModel.create(user)
-        // .then();
+    deleteUserById: (id) => {
+        return User.findByIdAndDelete(id)
+            .then((result) => {
+                return result;
+            })
     }
 }
 
-module.exports = User;
+module.exports = UserModel;

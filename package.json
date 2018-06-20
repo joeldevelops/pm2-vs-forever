@@ -4,7 +4,7 @@
   "description": "A comparison suite to discern any performance or development gains of pm2 vs forever.",
   "main": "server.js",
   "scripts": {
-    "start:express": "node ./microservices/ms-express/server.js",
+    "start:express:users": "node ./microservices/ms-express/users/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

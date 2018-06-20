@@ -3,51 +3,85 @@
 const { Router } = require('express');
 const router = Router();
 
-const UsersController = require('../controllers/UsersController');
-
-/** Create a user */
-router.post('/users', (req, res, next) => {
-    UsersController.createNewUser(req.body)
-        .then(response => {
-            // do something
-        })
-        .catch(next);
-});
+const UsersController = require('../controllers/user.controller');
 
 /** Read all users */
-router.get('/users', (req, res, next) => {
-    UsersController.getAllUsers()
-        .then(response => {
-            // do something
-        })
-        .catch(next);
+router.get('/', (req, res, next) => {
+    try {
+        UsersController.getAllUsers()
+            .then(response => {
+                res.send(response);
+            })
+            .catch(next);
+    }
+    catch (error) {
+        next(error);
+    }
 });
 
 /** Read a specific user */
-router.get('/users/:id', (req, res, next) => {
-    UsersController.getUserById(req.params.id)
+router.get('/:id', (req, res, next) => {
+    try {
+        UsersController.getUserById(req.params.id)
         .then(response => {
-            // do something
+            res.send(response);
         })
         .catch(next);
+    }
+    catch (error) {
+        next(error);
+    }
+});
+
+/** Create a user */
+router.post('/', (req, res, next) => {
+    // const user = {
+    //     name: {
+    //         first: 'First' + (Math.random()*1000),
+    //         last: 'User' + (Math.random()*1000)
+    //     },
+    //     age: 24,
+    //     ticketIds: []
+    // }
+
+    try {
+        UsersController.createNewUser(user)
+            .then(response => {
+                res.send(response);
+            })
+            .catch(next);
+    }
+    catch (error) {
+        next(error);
+    }
 });
 
 /** Update a specific user */
-router.put('/users/:id', (req, res, next) => {
-    UsersController.updateUserById(res.body)
-        .then(response => {
-            // do something
-        })
-        .catch(next);
+router.put('/:id', (req, res, next) => {
+    try {
+        UsersController.updateUserById(req.params.id)
+            .then(response => {
+                res.send(response);
+            })
+            .catch(next);
+    }
+    catch (error) {
+        next(error);
+    }
 })
 
 /** Delete a specific user */
-router.delete('/users/:id', (req, res, next) => {
-    UsersController.deleteUserById(res.body)
+router.delete('/:id', (req, res, next) => {
+    try {
+        UsersController.deleteUserById(req.params.id)
         .then(response => {
-            // do something
+            res.send(response);
         })
         .catch(next);
+    }
+    catch (error) {
+        next(error);
+    }
 });
 
 module.exports = router;
