@@ -2,7 +2,7 @@
 
 const { Router } = require('express');
 
-const Controller = require('../controllers/controllers');
+const TicketController = require('../controllers/ticket.controller');
 
 const router = Router();
 
@@ -10,12 +10,25 @@ router.get('/', (req, res, next) => {
     res.json({ message: 'hello world' });
 });
 
-router.get('/random', (req, res, next) => {
-    Controller.generateRandomNumber()
-        .then((randomNumber) => {
-            res.json(randomNumber);
-        })
-        .catch(next);
+/**
+ * Takes an object in the form of: data = { user: userObject, ticket: { type: type } }
+ */
+router.post('/buy', (req, res, next) => {
+    
+});
+
+router.get('/buy', (req, res, next) => {
+
+    const fakeData = {
+        user: {
+            _id: '7589402983745hroweu487584'
+        },
+        ticket: {
+            type: '5-park'
+        }
+    }
+
+    const response = TicketController.createNewTicket(fakeData);
 });
 
 module.exports = router;

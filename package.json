@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start:express:users": "node ./microservices/ms-express/users/server.js",
+    "start:express:ticketing": "node ./microservices/ms-express/ticketing/start-ticketing.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
