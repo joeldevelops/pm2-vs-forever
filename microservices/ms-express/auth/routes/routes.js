@@ -2,18 +2,14 @@
 
 const { Router } = require('express');
 
-const Controller = require('../controllers/controllers');
+const AuthController = require('../controllers/auth.controller');
 
 const router = Router();
 
-router.get('/', (req, res, next) => {
-    res.json({ message: 'hello world' });
-});
-
-router.get('/random', (req, res, next) => {
-    Controller.generateRandomNumber()
-        .then((randomNumber) => {
-            res.json(randomNumber);
+router.put('/', (req, res, next) => {
+    AuthController.validateTicket()
+        .then((result) => {
+            res.json(result);
         })
         .catch(next);
 });

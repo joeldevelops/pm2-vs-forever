@@ -1,6 +1,8 @@
 'use strict';
 
 const createError = require('http-errors');
+const request = require('request');
+const uuid = require('uuid4');
 
 const TicketModel = require('../models/ticket.model');
 
@@ -11,7 +13,8 @@ const TicketController = {
 
         const ticket = {
             purchaserId: data.user._id,
-            type: data.ticket.type
+            type: data.ticket.type,
+            authcode: uuid()
         }
 
         return TicketModel.createNewTicket(ticket);
@@ -36,7 +39,19 @@ const TicketController = {
         // Add code to check that the ticket is valid.
         // if (ticketNotAuthorized) return 'invalid';
 
-        return TicketModel.deleteTicketById(ticket._id);
+        return new Promise((resolve, reject) => {
+            request.put('http://localhost:3000/auth', ticket, (error, response, body) => {
+                if (error) return reject(error);
+
+                return resolve(response);
+            });
+        }).then((response) => {
+            return TicketModel.deleteTicketById(ticket._id);
+        })
+        .catch((error) => {
+            return error;
+        })
+
     }
 }
 
