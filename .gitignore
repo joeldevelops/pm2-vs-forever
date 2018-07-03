@@ -25,6 +25,5 @@ npm-debug.log
 jsconfig.json
 schemas
 typings
-db/*
 artillery/*.json
 artillery/*.html
