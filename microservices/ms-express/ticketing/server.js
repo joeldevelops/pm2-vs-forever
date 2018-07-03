@@ -1,5 +1,7 @@
 'use strict';
 
+const config = require('../config');
+
 const app = require('./app');
 const debug = require('debug')('express-temp:server');
 const http = require('http');
@@ -8,7 +10,7 @@ const http = require('http');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3002');
+const port = normalizePort(config.ticketing.port);
 app.set('port', port);
 
 /**
@@ -83,5 +85,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log(`server is listening on`, '\x1b[32m' + `${bind}` + '\x1b[0m');
+  console.log(`Ticketing server is listening on`, '\x1b[32m' + `${bind}` + '\x1b[0m');
 }

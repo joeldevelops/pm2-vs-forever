@@ -10,25 +10,22 @@ router.get('/', (req, res, next) => {
     res.json({ message: 'hello world' });
 });
 
-/**
- * Takes an object in the form of: data = { user: userObject, ticket: { type: type } }
- */
+// Takes an object in the form of: data = { user: userObject, ticket: { type: type } }
 router.post('/buy', (req, res, next) => {
-    
+    TicketController.purchaseTicket(req.body)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(next);
 });
 
-router.get('/buy', (req, res, next) => {
-
-    const fakeData = {
-        user: {
-            _id: '7589402983745hroweu487584'
-        },
-        ticket: {
-            type: '5-park'
-        }
-    }
-
-    const response = TicketController.createNewTicket(fakeData);
-});
+// Redeem a ticket.
+router.put('/redeem', (req, res, next) => {
+    TicketController.redeemTicket(req.body)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(next);
+})
 
 module.exports = router;

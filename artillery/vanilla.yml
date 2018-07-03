@@ -1,0 +1,51 @@
+config:
+  target: "http://localhost:3003/users"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 25
+    - duration: 60
+      arrivalRate: 30
+  variables:
+    first:
+      - "firstname"
+      - "Joel"
+      - "JP"
+      - "Chase"
+      - "Greg"
+    last:
+      - "lastname"
+      - "Milligan"
+      - "Giraldo"
+      - "O'Neill"
+      - "DiSisto"
+    age:
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+scenarios:
+  - name: "Create new user account"
+    flow:
+      - post:
+          url: "/"
+          json:
+            name:
+              first: "{{ first }}"
+              last: "{{ last }}"
+            age: "{{ age }}"
+      #     capture:
+      #       json: "$.results[0].id"
+      #       as: "id"
+      # - get:
+      #     url: "/details/{{ id }}"
+      # - think: 3
+      # - post:
+      #     url: "/cart"
+      #     json:
+      #       productId: "{{ id }}"

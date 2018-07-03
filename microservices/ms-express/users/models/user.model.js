@@ -18,10 +18,10 @@ const UserModel = {
             });
     },
 
-    createNewUser: (user) => {
-        return User.create(user)
-            .then((user) => {
-                return user;
+    createNewUser: (newUser) => {
+        return User.create(newUser)
+            .then((response) => {
+                return response;
             });
     },
 

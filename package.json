@@ -2,8 +2,10 @@
   "name": "pm2-vs-forever",
   "version": "1.0.0",
   "description": "A comparison suite to discern any performance or development gains of pm2 vs forever.",
-  "main": "server.js",
+  "main": "./microservices/ms-express/auth/server.js",
   "scripts": {
+    "start": "node ./microservices/ms-express/auth/server.js",
+    "start:express": "node ./microservices/ms-express/start-services.js",
     "start:express:users": "node ./microservices/ms-express/users/server.js",
     "start:express:ticketing": "node ./microservices/ms-express/ticketing/start-ticketing.js",
     "test": "echo \"Error: no test specified\" && exit 1"
