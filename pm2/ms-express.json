@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "Auth Server",
+            "script": "./server.js",
+            "cwd": "../microservices/ms-express/auth",
+            "instances": 0,
+            "exec_mode": "cluster",
+            "max_restarts": 1
+        },
+        {
+            "name": "Ticketing Server",
+            "script": "./server.js",
+            "cwd": "../microservices/ms-express/ticketing",
+            "instances": 0,
+            "exec_mode": "cluster",
+            "max_restarts": 1
+        },
+        {
+            "name": "Users Server",
+            "script": "./server.js",
+            "cwd": "../microservices/ms-express/users",
+            "instances": 0,
+            "exec_mode": "cluster",
+            "max_restarts": 1
+        }
+    ]
+}
