@@ -23,7 +23,6 @@ npm-debug.log
 /definitions
 .vscode
 jsconfig.json
-schemas
 typings
 artillery/*.json
 artillery/*.html
